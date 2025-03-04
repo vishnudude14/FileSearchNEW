@@ -3,7 +3,7 @@ import logging.config
 import os
 import asyncio
 from aiohttp import web
-from plugins.web_server import web_server  # Ensure this returns a valid web app
+from plugins.web_server import web_server  # Ensure this exists
 
 # Get logging configurations
 logging.config.fileConfig('logging.conf')
