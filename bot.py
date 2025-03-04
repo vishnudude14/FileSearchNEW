@@ -1,7 +1,9 @@
 import logging
 import logging.config
+import os
+import asyncio
 from aiohttp import web
-from plugins import web_server
+from plugins.web_server import web_server  # Ensure this returns a valid web app
 
 # Get logging configurations
 logging.config.fileConfig('logging.conf')
@@ -13,7 +15,7 @@ from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, LOG_STR, PORT
+from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, LOG_STR
 from Script import script
 from datetime import date, datetime
 import pytz
@@ -21,8 +23,10 @@ from utils import temp
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
 
-class Bot(Client):
+# Get PORT from environment (needed for Koyeb)
+PORT = int(os.environ.get("PORT", 8000))  # Use 8000 as default for local testing
 
+class Bot(Client):
     def __init__(self):
         super().__init__(
             name=SESSION,
@@ -45,14 +49,13 @@ class Bot(Client):
         temp.U_NAME = me.username
         temp.B_NAME = me.first_name
         self.username = '@' + me.username
-        #web-response
-        app = web.AppRunner(await web_server())
-        await app.setup()
-        bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, PORT).start()
 
-        logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
+        # Start web server
+        asyncio.create_task(self.start_web_server())
+
+        logging.info(f"{me.first_name} with Pyrogram v{__version__} (Layer {layer}) started as {me.username}.")
         logging.info(LOG_STR)
+
         tz = pytz.timezone('Asia/Kolkata')
         today = date.today()
         now = datetime.now(tz)
@@ -62,36 +65,23 @@ class Bot(Client):
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
-    
+
+    async def start_web_server(self):
+        """ Starts the web server required for Koyeb deployment """
+        app = await web_server()  # Ensure this function returns a valid web app
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, "0.0.0.0", PORT)
+        await site.start()
+        logging.info(f"Web server started on port {PORT}")
+
     async def iter_messages(
         self,
         chat_id: Union[int, str],
         limit: int,
         offset: int = 0,
     ) -> Optional[AsyncGenerator["types.Message", None]]:
-        """Iterate through a chat sequentially.
-        This convenience method does the same as repeatedly calling :meth:`~pyrogram.Client.get_messages` in a loop, thus saving
-        you from the hassle of setting up boilerplate code. It is useful for getting the whole chat messages with a
-        single call.
-        Parameters:
-            chat_id (``int`` | ``str``):
-                Unique identifier (int) or username (str) of the target chat.
-                For your personal cloud (Saved Messages) you can simply use "me" or "self".
-                For a contact that exists in your Telegram address book you can use his phone number (str).
-                
-            limit (``int``):
-                Identifier of the last message to be returned.
-                
-            offset (``int``, *optional*):
-                Identifier of the first message to be returned.
-                Defaults to 0.
-        Returns:
-            ``Generator``: A generator yielding :obj:`~pyrogram.types.Message` objects.
-        Example:
-            .. code-block:: python
-                for message in app.iter_messages("pyrogram", 1, 15000):
-                    print(message.text)
-        """
+        """Iterate through a chat sequentially."""
         current = offset
         while True:
             new_diff = min(200, limit - current)
@@ -101,7 +91,6 @@ class Bot(Client):
             for message in messages:
                 yield message
                 current += 1
-
 
 app = Bot()
 app.run()
