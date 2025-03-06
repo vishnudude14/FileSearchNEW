@@ -15,3 +15,6 @@ pynewtonmath
 pytz
 aiohttp
 datetime
+gunicorn
+Flask==2.2.2
+dnspython==2.3.0
