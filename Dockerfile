@@ -1,10 +1,12 @@
-FROM python:3.9-slim-buster
+FROM python:3.10-slim-buster
 
-WORKDIR /app
+RUN apt update && apt upgrade -y
+RUN apt install git -y
+COPY requirements.txt /requirements.txt
 
-COPY requirements.txt /app/
-RUN pip3 install --no-cache-dir -r requirements.txt
-
-COPY . /app
-
-CMD gunicorn app:app & python3 bot.py
+RUN cd /
+RUN pip3 install -U pip && pip3 install -U -r requirements.txt
+RUN mkdir /EvaMaria
+WORKDIR /EvaMaria
+COPY start.sh /start.sh
+CMD ["/bin/bash", "/start.sh"]
