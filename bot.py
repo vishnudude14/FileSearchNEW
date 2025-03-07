@@ -20,30 +20,6 @@ logging.getLogger().setLevel(logging.INFO)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("imdbpy").setLevel(logging.ERROR)
 
-# Koyeb assigns a PORT environment variable, set a default if not found
-PORT = int(os.environ.get("PORT", 8000))  
-
-URL = "https://nuclear-dove-tgcinema-022ee3d2.koyeb.app/"  # Replace with your Koyeb app link...
-
-async def ping():
-    async with aiohttp.ClientSession() as session:
-        while True:
-            try:
-                async with session.get(URL) as response:
-                    print(f"Pinged server, status: {response.status}")
-            except Exception as e:
-                print(f"{e}")
-            await asyncio.sleep(120)
-
-# Fix the "No event loop" error
-try:
-    loop = asyncio.get_running_loop()
-except RuntimeError:
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-
-loop.create_task(ping())
-
 class Bot(Client):
     def __init__(self):
         super().__init__(
@@ -97,8 +73,3 @@ class Bot(Client):
 
 app = Bot()
 app.run()
-
-# Prevent Koyeb from stopping the bot by keeping it alive
-import time
-while True:
-    time.sleep(86400)  # Keeps process alive for 24 hours
