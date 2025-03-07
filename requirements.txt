@@ -16,5 +16,5 @@ pytz
 aiohttp
 datetime
 gunicorn
-Flask==2.2.2
+Flask
 dnspython==2.3.0
