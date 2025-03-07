@@ -15,12 +15,12 @@ class script(object):
 𝑀𝑦 𝑁𝑎𝑚𝑒 𝐼𝑠 <a href=https://t.me/{}>{}</a>, 𝐼 𝐴𝑚 𝐴 𝑆𝑖𝑚𝑝𝑙𝑒 𝐴𝑢𝑡𝑜𝐹𝑖𝑙𝑡𝑒𝑟 𝐵𝑜𝑡, 𝐼 𝐶𝑎𝑛 𝑃𝑟𝑜𝑣𝑖𝑑𝑒 𝑀𝑜𝑣𝑖𝑒𝑠, 𝐽𝑢𝑠𝑡 𝑆𝑒𝑎𝑟𝑐ℎ 𝑌𝑜𝑢𝑟 𝑅𝑒𝑞𝑢𝑒𝑠𝑡𝑒𝑑 𝑀𝑜𝑣𝑖𝑒 𝑜𝑟 𝑆𝑒𝑟𝑖𝑒𝑠 𝑁𝑎𝑚𝑒 𝐴𝑛𝑑 𝐸𝑛𝑗𝑜𝑦 😍''')
     HELP_TXT = """𝙷𝙴𝚈 {}
 𝐻𝐸𝑅𝐸 𝐼𝑆 𝑇𝐻𝐸 𝐻𝐸𝐿𝑃 𝐹𝑂𝑅 𝑀𝑌 𝐶𝑂𝑀𝑀𝐴𝑁𝐷𝑆."""
-    ABOUT_TXT = """<b><i>🤖 ᴍʏ ɴᴀᴍᴇ : <a href=https://t.me/TGCWFilterbot><b>File Search Bot 𝐓𝐆𝐂𝐖⚡</b></a>\n
-👨‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href=https://t.me/VishnuMBbot>𝐕𝐢𝐬𝐡𝐧𝐮 𝐌𝐁</b></a>\n
-📝 ʟᴀɴɢᴜᴀɢᴇ : 𝑃𝑌𝑅𝑂𝐺𝑅𝐴𝑀\n
-📚 ꜰʀᴀᴍᴇᴡᴏʀᴋ : 𝑃𝑌𝑇𝐻𝑂𝑁 3.10\n
-📡 ʜᴏsᴛᴇᴅ ᴏɴ : 𝑆𝑂𝑀𝐸𝑊𝐻𝐸𝑅𝐸\n
-🌟 ᴠᴇʀsɪᴏɴ : 𝑉𝑒𝑟𝑠𝑖𝑜𝑛 69🤤 [ 𝙱𝙴𝚃𝙰 ]\n</b></i>"""
+    ABOUT_TXT = """<b><i>🤖 𝖬ʏ 𝖭ᴀᴍᴇ : <a href=https://t.me/TGCWFilterbot><b>File Search Bot 𝐓𝐆𝐂𝐖⚡</b></a>\n
+👨‍💻 𝖣ᴇᴠᴇʟᴏᴘᴇʀ : <a href=https://t.me/VishnuMBbot>𝐕𝐢𝐬𝐡𝐧𝐮 𝐌𝐁</b></a>\n
+📝 𝖫ᴀɴɢᴜᴀɢᴇ : P𝗒𝗍𝗁𝗈𝗇\n
+📚 𝖥ʀᴀᴍᴇᴡᴏʀᴋ : 𝖯𝗒𝗋𝗈𝗀𝗋𝖺𝗆 3.10\n
+📡 𝖧ᴏsᴛᴇᴅ ᴏɴ : 𝖯𝗋𝗂𝗏𝖺𝗍𝖾 𝖲𝖾𝗋𝗏𝖾𝗋\n
+🌟 𝖵ᴇʀsɪᴏɴ : 𝖴𝗇𝖢𝗅𝖺𝗌𝗌𝗂𝖿𝗂𝖾𝖽😌 [ 𝙱𝙴𝚃𝙰 ]\n</b></i>"""
     SOURCE_TXT = """<b>𝐂𝐫𝐞𝐚𝐭𝐞 𝐎𝐧𝐞 𝐋𝐢𝐤𝐞 𝐓𝐡𝐢𝐬:</b>
 » I will Create One Bot For You<b>
 » Contact Me @Vishnumbbot<b>"""
@@ -48,7 +48,7 @@ class script(object):
 3. Buttons should be properly parsed as markdown format
 
 <b>URL buttons:</b>
-<code>[Button Text](buttonurl:https://t.me/GreyMatter_Owner)</code>
+<code>[Button Text](buttonurl:https://t.me/vishnumb14)</code>
 
 <b>Alert buttons:</b>
 <code>[Button Text](buttonalert:This is an alert message)</code>"""
@@ -99,11 +99,11 @@ This module only works for my admins
 • /unban  - <code>to unban a user.</code>
 • /channel - <code>to get list of total connected channels</code>
 • /broadcast - <code>to broadcast a message to all users</code>"""
-    STATUS_TXT = """★ 𝚃𝙾𝚃𝙰𝙻 𝙵𝙸𝙻𝙴𝚂: <code>{}</code>
-★ 𝚃𝙾𝚃𝙰𝙻 𝚄𝚂𝙴𝚁𝚂: <code>{}</code>
-★ 𝚃𝙾𝚃𝙰𝙻 𝙲𝙷𝙰𝚃𝚂: <code>{}</code>
-★ 𝚄𝚂𝙴𝙳 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝚒𝙱
-★ 𝙵𝚁𝙴𝙴 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝚒𝙱"""
+    STATUS_TXT = """★ 𝖳𝖮𝖳𝖠𝖫 𝖥𝖨𝖫𝖤𝖲: <code>{}</code>
+★ 𝖳𝖮𝖳𝖠𝖫 𝖴𝖲𝖤𝖱𝖲: <code>{}</code>
+★ 𝖳𝖮𝖳𝖠𝖫 𝖢𝖧𝖠𝖳𝖲: <code>{}</code>
+★ 𝖴𝖲𝖤𝖣 𝖲𝖳𝖮𝖱𝖠𝖦𝖤: <code>{}</code> 𝙼𝚒𝙱
+★ 𝖥𝖱𝖤𝖤 𝖲𝖳𝖮𝖱𝖠𝖦𝖤: <code>{}</code> 𝙼𝚒𝙱"""
     RESTART_TXT = """
 <b>Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !
 
@@ -123,5 +123,6 @@ Bʏ @TGCWFilterbot</b>"""
     
 <b>᚛› 𝐈𝐃 - <code>{}</code></b>
 <b>᚛› 𝐍𝐚𝐦𝐞 - {}
+
 Bʏ @TGCWFilterbot</b>
 """
