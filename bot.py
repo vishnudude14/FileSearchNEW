@@ -43,7 +43,7 @@ class Bot(Client):
         temp.U_NAME = me.username
         temp.B_NAME = me.first_name
         self.username = '@' + me.username
-        logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
+        logging.info(f"{me.first_name} with Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
         tz = pytz.timezone('Asia/Kolkata')
         today = date.today()
@@ -71,5 +71,26 @@ class Bot(Client):
                 yield message
                 current += 1
 
+# ------------------------ FIX FOR KOYEB DEPLOYMENT ------------------------
+
+import threading
+from flask import Flask
+
+# Create a simple web server to keep Koyeb instance active
+web_app = Flask(__name__)
+
+@web_app.route("/")
+def home():
+    return "Bot is running!"
+
+# Function to start Flask server
+def run_flask():
+    port = int(os.environ.get("PORT", 8080))  # Koyeb assigns a port dynamically
+    web_app.run(host="0.0.0.0", port=port)
+
+# Start Flask server in a separate thread
+threading.Thread(target=run_flask, daemon=True).start()
+
+# Start the Telegram bot
 app = Bot()
 app.run()
