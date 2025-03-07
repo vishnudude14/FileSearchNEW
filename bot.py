@@ -26,7 +26,7 @@ pyroutils.MIN_CHAT_ID = -999999999999
 pyroutils.MIN_CHANNEL_ID = -100999999999999
 
 # Adding Ping Server for Koyeb Sleep problem
-URL = "https://valid-gertrude-tgcwvishp-7c3f5289.koyeb.app/"  # Replace with your koyeb app link...
+URL = "https://nuclear-dove-tgcinema-022ee3d2.koyeb.app/"  # Replace with your koyeb app link...
 
 async def ping():
     async with aiohttp.ClientSession() as session:
@@ -36,7 +36,7 @@ async def ping():
                     print(f"Pinged server, status: {response.status}")
             except Exception as e:
                 print(f"{e}")
-            await asyncio.sleep(120)
+            await asyncio.sleep(600)
 
 loop = asyncio.get_event_loop()
 loop.create_task(ping())
